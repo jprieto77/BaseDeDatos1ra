@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Producto</title>
+    <link rel="stylesheet" href="../static/style/detalles_productos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">MyStore</div>
+        <nav>
+            <a href="home.html">Inicio</a>
+            <a href="Productos.html">Productos</a>
+            <a href="Devoluciones.html">Devoluciones</a>
+        </nav>
+    </header>
+
+    <!-- Product Details Section -->
+    <main class="product-details">
+        <div class="image-gallery">
+            <img src="../static/images/detalleproduc.png" alt="Producto Principal" class="main-image">
+            <div class="thumbnail-gallery">
+                <img src="../static/images/detallesproduct2.png" alt="Vista 1">
+                <img src="../static/images/detallesproduct3.png" alt="Vista 2">
+                </div>
+        </div>
+        <div class="details">
+            <h1>Nombre del Producto</h1>
+            <p class="price">$1,299.99</p>
+            <div class="rating">
+                <span>⭐</span>
+                <span>⭐</span>
+                <span>⭐</span>
+                <span>⭐</span>
+                <span>☆</span>
+                <span>(4.5 - 200 opiniones)</span>
+            </div>
+            <p class="description">
+                Este es un producto de alta calidad diseñado para satisfacer tus necesidades. Ideal para uso personal y profesional.
+            </p>
+            <button class="btn-buy">
+                <a href="carrito.html">Añadir Al Carrito</a>
+            </button>
+        </div>
+    </main>
+
+    
+    <!-- User Reviews Section -->
+    <section class="reviews">
+        <h2>Opiniones de los Usuarios</h2>
+        <div class="review">
+            <h3>Juan Pérez</h3>
+            <p>⭐ ⭐ ⭐ ⭐ ⭐</p>
+            <p>¡Excelente producto! Me encantó la calidad y llegó muy rápido.</p>
+        </div>
+        <div class="review">
+            <h3>María Gómez</h3>
+            <p>⭐ ⭐ ⭐ ⭐ ☆</p>
+            <p>Buena relación calidad-precio. Aunque podría mejorar en algunos detalles.</p>
+        </div>
+        <div class="review">
+            <h3>Pedro Martínez</h3>
+            <p>⭐ ⭐ ⭐ ☆ ☆</p>
+            <p>El producto cumple, pero la entrega tardó más de lo esperado.</p>
+        </div>
+        <form class="add-review">
+            <h3>Deja tu opinión</h3>
+            <textarea placeholder="Escribe tu opinión aquí..."></textarea>
+            <button type="submit">Enviar Opinión</button>
+        </form>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MyStore - Todos los derechos reservados</p>
+        <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+
+    <script src="../static/js/Produtos.js"></script>
+</body>
+</html>

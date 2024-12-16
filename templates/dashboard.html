@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | MyStore</title>
+    <link rel="stylesheet" href="../static/style/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>MyStore</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="manage_lista.html"><i class="fas fa-box"></i> Productos</a>
+                <a href="manage_users.html"><i class="fas fa-th-large"></i> Usuarios</a>
+                <a href="manage_sucursales.html"><i class="fas fa-store"></i> Sucursales</a>
+                <a href="manage_devoluciones.html"><i class="fas fa-undo-alt"></i> Devoluciones</a>
+                <a href="comentarios.html"><i class="fas fa-comments"></i> Comentarios</a>
+                <a href="configuracion.html"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="header">
+                <div class="header-actions">
+                    <h1>Admin Panel</h1>
+                    <div class="user-menu">
+                        <i class="fas fa-user-circle"></i> Admin
+                        <button><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    </div>
+                </div>
+            </header>
+
+            <section class="dashboard">
+                <h2>Resumen General</h2>
+                <div class="metrics">
+                    <div class="metric-card">
+                        <i class="fas fa-dollar-sign metric-icon"></i>
+                        <h3>Ventas Totales</h3>
+                        <p>$<span id="ventas-total">12,500</span></p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fas fa-undo-alt metric-icon"></i>
+                        <h3>Devoluciones</h3>
+                        <p><span id="devoluciones-total">15</span></p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fas fa-exclamation-triangle metric-icon"></i>
+                        <h3>Stock Bajo</h3>
+                        <p><span id="stock-bajo">8</span> productos</p>
+                    </div>
+                    <div class="metric-card">
+                        <i class="fas fa-star metric-icon"></i>
+                        <h3>Calificación Promedio</h3>
+                        <p><span id="calificacion-prom">4.5</span> / 5</p>
+                    </div>
+                </div>
+                           
+            </section>
+        </main>
+    </div>
+   
+
+    <script src="../static/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

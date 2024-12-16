@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas Gaseosas</title>
+    <link rel="stylesheet" href="../static/style/home.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            Bebidas Gaseosas
+        </div>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos, marcas y más..." aria-label="Buscar productos">
+                <button class="search-button" type="button" aria-label="Iniciar búsqueda">
+                    Buscar
+                </button>
+            </div>
+        </div>
+        <nav>
+            <a href="home.html" class="active">Inicio</a>
+           
+            <a href="Productos.html">Productos</a>
+            <a href="#">Devoluciones</a>
+        </nav>
+        
+        <div class="actions" id="user-actions">
+            <!-- Mostrar el nombre del usuario logueado -->
+            <div id="welcome-message">
+                <p>Hola <span id="user-name"></span></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Carousel Section -->
+    <div class="background-container">
+        <div class="content">
+            <!-- Aquí reemplazamos el texto por el botón de sucursal más cercana -->
+            <p>¡Encuentra tu sucursal más cercana!</p>
+            <a href="ubicacion.html" class="btn-sucursal">Buscar Sucursal</a>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <section class="products">
+        <h2>Productos Destacados</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="../static/images/Poduct1.png" alt="Laptop Gamer">
+                <h3> Coca-Cola 600ml</h3>
+                <p>$1.50</p>
+                <button class="btn-buy">Comprar</button>
+            </div>
+            <div class="product-card">
+                <img src="../static/images/Product2.png" alt="Teclado RGB">
+                <h3>Pepsi 600ml</h3>
+                <p>$1,45</p>
+                <button class="btn-buy">Comprar</button>
+            </div>
+            <div class="product-card">
+                <img src="../static/images/Laptop.png" alt="Monitor UltraWide">
+                <h3>Agua Mineral</h3>
+                <p>$1,0</p>
+                <button class="btn-buy">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MyStore - Todos los derechos reservados</p>
+        <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+    <script src="../static/js/home.js"></script>
+
+    <script>
+        // Aquí obtenemos el nombre del usuario desde la sesión en el backend
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.user) {
+                    document.getElementById('user-name').innerText = data.user.name;  // Mostrar el nombre del usuario
+                    document.getElementById('welcome-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos del usuario:', error);
+            });
+    </script>
+
+</body>
+</html>

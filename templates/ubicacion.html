@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicación de Sucursales</title>
+    <link rel="stylesheet" href="../static/style/ubicacion.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            Bebidas
+        </div>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos, marcas y más..." aria-label="Buscar productos">
+                <button class="search-button" type="button" aria-label="Iniciar búsqueda">
+                    Buscar
+                </button>
+            </div>
+        </div>
+        <nav>
+            <a href="home2.html" class="active">Inicio</a>
+           
+            <a href="Productos.html">Productos</a>
+            <a href="#">Devoluciones</a>
+        </nav>
+        
+        <div class="actions" id="user-actions">
+            <!-- Mostrar el nombre del usuario logueado -->
+            <div id="welcome-message">
+                <p>Hola <span id="user-name"></span></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <div class="background-container">
+        <div class="content">
+            <h1>Encuentra tu Sucursal Más Cercana</h1>
+            <div id="map"></div>
+            <button id="find-nearest">Encontrar Sucursal Más Cercana</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MyStore - Todos los derechos reservados</p>
+        <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Crear el mapa
+        const map = L.map('map').setView([4.7110, -74.0721], 12); // Ubicación inicial (Bogotá)
+
+        // Añadir capa de mapa (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Función para agregar marcadores de sucursales
+        const sucursales = [
+            { nombre: 'Sucursal 1', lat: 4.706538546339786, lng: -74.10391636609499 },
+            { nombre: 'Sucursal 2', lat: 4.631042674641298, lng: -74.08133764980971 },
+            { nombre: 'Sucursal 3', lat: 4.7047434234659224, lng: -74.04127570776447 }
+        ];
+
+        sucursales.forEach(sucursal => {
+            L.marker([sucursal.lat, sucursal.lng])
+                .addTo(map)
+                .bindPopup(sucursal.nombre);
+        });
+
+        // Cambiar el ícono del marcador del usuario a color rojo utilizando la ruta de tu imagen
+        const redIcon = L.icon({
+            iconUrl: '../static/images/pinrojo.png', // Ruta a tu imagen
+            iconSize: [30, 50], // Tamaño del icono
+            iconAnchor: [15, 50], // Punto de anclaje (la base del pin)
+            popupAnchor: [0, -50] // Ajuste del popup
+        });
+
+        // Función para obtener la ubicación del usuario y mostrarla en el mapa
+        function showUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Crear marcador para la ubicación del usuario con ícono rojo
+                    const userMarker = L.marker([userLat, userLng], { icon: redIcon }).addTo(map).bindPopup("Tu ubicación");
+
+                    // Centrar el mapa en la ubicación del usuario
+                    map.setView([userLat, userLng], 12);
+                });
+            } else {
+                alert("Geolocalización no soportada por el navegador.");
+            }
+        }
+
+        // Llamamos a la función para mostrar la ubicación del usuario al cargar la página
+        showUserLocation();
+
+        // Función para obtener la ubicación del usuario y mostrar la sucursal más cercana
+        document.getElementById('find-nearest').addEventListener('click', function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Crear marcador para la ubicación del usuario con ícono rojo
+                    const userMarker = L.marker([userLat, userLng], { icon: redIcon }).addTo(map).bindPopup("Tu ubicación");
+
+                    // Calcular la sucursal más cercana
+                    let nearestSucursal = null;
+                    let minDistance = Infinity;
+
+                    sucursales.forEach(sucursal => {
+                        const distance = getDistance(userLat, userLng, sucursal.lat, sucursal.lng);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            nearestSucursal = sucursal;
+                        }
+                    });
+
+                    alert('La sucursal más cercana es: ' + nearestSucursal.nombre);
+
+                    // Centrar el mapa en la sucursal más cercana y hacer zoom
+                    map.setView([nearestSucursal.lat, nearestSucursal.lng], 14);
+
+                    // Crear marcador de la sucursal más cercana en el mapa
+                    L.marker([nearestSucursal.lat, nearestSucursal.lng])
+                        .addTo(map)
+                        .bindPopup("Sucursal más cercana: " + nearestSucursal.nombre);
+                });
+            } else {
+                alert("Geolocalización no soportada por el navegador.");
+            }
+        });
+
+        // Función para calcular la distancia en km entre dos puntos (lat, lng)
+        function getDistance(lat1, lng1, lat2, lng2) {
+            const R = 6371; // Radio de la Tierra en km
+            const dLat = deg2rad(lat2 - lat1);
+            const dLng = deg2rad(lng2 - lng1);
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                      Math.sin(dLng / 2) * Math.sin(dLng / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c; // Distancia en km
+        }
+
+        // Función para convertir grados a radianes
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+        // Aquí obtenemos el nombre del usuario desde la sesión en el backend
+        fetch('/api/user')
+            .then(response => response.json())
+            .then(data => {
+                if (data.user) {
+                    document.getElementById('user-name').innerText = data.user.name;  // Mostrar el nombre del usuario
+                    document.getElementById('welcome-message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos del usuario:', error);
+            });
+    </script>
+</body>
+</html>

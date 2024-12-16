@@ -1,0 +1,269 @@
+/* Reset and Global Styles */
+body label {
+    font-family: label ;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Asegurarse de que html y body ocupen toda la altura */
+html, body {
+    height: 100%;  /* Esto asegura que la página ocupe toda la altura de la ventana */
+    margin: 0;     /* Elimina márgenes predeterminados */
+    padding: 0;    /* Elimina relleno */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5e727c;
+    color: white;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a.active {
+    color: #998eb1;
+}
+
+header .actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Hacer que el mapa ocupe toda la pantalla */
+#map {
+    height: 100vh; /* Ocupa el 100% de la altura visible de la ventana */
+    width: 100%;
+}
+
+/* Estilo del botón de sucursal más cercana */
+#find-nearest {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#find-nearest:hover {
+    background-color: #0056b3;
+}
+
+.btn-sucursal {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-sucursal:hover {
+    background-color: #2d8a72;
+}
+
+
+header .login {
+    background-color: #998eb1;
+    color: white;
+}
+
+header .signup {
+    background-color: #3da49d;
+    color: rgb(0, 0, 0);
+}
+
+/* Contenedor principal con la imagen de fondo */
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 750px; /* Deja que este contenedor ocupe toda la altura de la página */
+    overflow: hidden;
+}
+
+/* Imagen de fondo borrosa */
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    filter: blur(8px); /* Ajusta la intensidad del desenfoque */
+    transform: scale(1.2); /* Aumenta el tamaño para evitar bordes visibles */
+    z-index: 1;
+}
+
+/* Contenido encima del fondo */
+.background-container .content {
+    position: relative;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-bar input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.search-bar .search-button {
+    padding: 5px 10px;
+    background-color:#3da49d ;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.login {
+    background-color: #998eb1;
+}
+
+.signup {
+    background-color: #3da49d;
+}
+
+/* Carousel */
+.carousel img.active {
+    display: block;
+}
+
+.carousel-controls span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-controls .prev {
+    left: 10px;
+}
+
+.carousel-controls .next {
+    right: 10px;
+}
+
+/* Categories */
+.categories {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.category-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.category-card {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* Products */
+.products, .offers {
+    padding: 20px;
+    background-color: white;
+}
+
+.product-grid, .offer-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.product-card, .offer-card {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-card img, .offer-card img {
+    max-width: 100px;
+    height: auto;
+}
+
+.btn-buy {
+    background-color: #3da49d;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.price-old {
+    text-decoration: line-through;
+}
+
+.price-new {
+    color: #998eb1;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #5e727c;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    color: #ff0000;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.p {
+    text-align: left;
+    text-decoration-color: #998eb1;
+}

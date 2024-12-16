@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | MyStore</title>
+    <link rel="stylesheet" href="../static/style/manager_devoluciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>MyStore</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" ><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="manage_lista.html"><i class="fas fa-box"></i> Productos</a>
+                <a href="manage_users.html"><i class="fas fa-th-large"></i> Usuarios</a>
+                <a href="manage_sucursales.html"><i class="fas fa-store"></i> Sucursales</a>
+                <a href="manage_devoluciones.html" ><i class="fas fa-undo-alt"></i> Devoluciones</a>
+                <a href="manager_comentarios.html"><i class="fas fa-comments"></i> Comentarios</a>
+                <a href="configuracion.html" class="active"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+        <main class="content">
+            <header class="header">
+                <div class="header-actions">
+                    <h1>Admin Panel</h1>
+                    <div class="user-menu">
+                        <i class="fas fa-user-circle"></i> Admin
+                        <button><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    </div>
+                </div>
+            </header>
+    
+            <div class="container">
+                <h2 class="page-title">Configuración</h2>
+                <form class="config-form">
+                  <div class="form-group">
+                    <label for="configNombre">Nombre </label>
+                    <input type="text" id="configNombre" class="form-input" placeholder="Ingrese el nombre">
+                  </div>
+                  <div class="form-group">
+                    <label for="configCorreo">Correo Electrónico</label>
+                    <input type="email" id="configCorreo" class="form-input" placeholder="Ingrese el correo">
+                  </div>
+                  <div class="form-group">
+                    <label for="configTelefono">Teléfono</label>
+                    <input type="tel" id="configTelefono" class="form-input" placeholder="Ingrese el teléfono">
+                  </div>
+                  <div class="form-group">
+                    <label for="configTelefono">Fecha</label>
+                    <input type="date" id="configFecha" class="form-input" placeholder="Fecha de nacimiento">
+                  </div>
+                  <button class="btn btn-save">Guardar Configuración</button>
+                </form>
+              </div>
+              
+  
+            <!-- Más filas aquí -->
+        </tbody>
+    </table>
+</div>  
+        
+        
+
+    <script src="../static/js/sucursal.js"></script>
+</body>
+</html>
+

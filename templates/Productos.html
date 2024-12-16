@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Productos</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../static/style/Productos.css">
+</head>
+<body>
+    <h1>Productos Disponibles</h1>
+    
+    <!-- Lista de productos dinámicamente generada -->
+    <div id="productos" class="productos-container">
+        <!-- Los productos se mostrarán aquí -->
+    </div>
+
+    <script>
+        // Función para obtener y mostrar los productos
+        function obtenerProductos() {
+            fetch('/api/productos')  // Solicitar los productos desde el servidor
+                .then(response => response.json())
+                .then(productos => {
+                    const productosDiv = document.getElementById("productos");
+                    productosDiv.innerHTML = '';  // Limpiar contenido previo
+
+                    productos.forEach(producto => {
+                        const productItem = document.createElement("div");
+                        productItem.classList.add("product-item");
+
+                        // Crear el nombre del producto
+                        const productName = document.createElement("h3");
+                        productName.textContent = producto[1];  // nombre
+
+                        // Crear la imagen del producto (imagen de prueba si no existe)
+                        const productImage = document.createElement("img");
+                        productImage.src = 'https://via.placeholder.com/150';  // Imagen de prueba
+                        productImage.alt = producto[1];  // nombre del producto
+                        productImage.classList.add("product-image");
+
+                        // Crear el precio del producto (verificando que sea un número válido)
+                        const productPrice = document.createElement("p");
+                        const precio = isNaN(producto[2]) ? 0 : parseFloat(producto[2]);  // Validar si el precio es un número
+                        productPrice.textContent = `$${precio.toFixed(2)}`;
+
+                        // Crear el stock disponible del producto
+                        const productStock = document.createElement("p");
+                        productStock.textContent = `Stock disponible: ${producto[3]}`;
+
+                        // Crear el campo para cantidad
+                        const productQuantityInput = document.createElement("input");
+                        productQuantityInput.type = "number";
+                        productQuantityInput.id = `cantidad_producto_${producto[0]}`;
+                        productQuantityInput.min = 1;
+                        productQuantityInput.max = producto[3];  // Limitar cantidad máxima según el stock
+                        productQuantityInput.value = 1;
+
+                        // Botón para comprar
+                        const buyButton = document.createElement("button");
+                        buyButton.textContent = "Comprar";
+                        buyButton.onclick = function () {
+                            realizarCompra(producto[0]);
+                        };
+
+                        // Agregar todos los elementos al item
+                        productItem.appendChild(productImage);
+                        productItem.appendChild(productName);
+                        productItem.appendChild(productPrice);
+                        productItem.appendChild(productStock);
+                        productItem.appendChild(productQuantityInput);
+                        productItem.appendChild(buyButton);
+
+                        // Agregar el item a la lista de productos
+                        productosDiv.appendChild(productItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al obtener productos:', error);
+                    alert('Hubo un problema al cargar los productos.');
+                });
+        }
+
+        // Función para realizar una compra
+        function realizarCompra(productId) {
+            let cantidad = document.getElementById(`cantidad_producto_${productId}`).value;
+            let clienteId = 1;  // Suponiendo que el cliente está logueado con el ID 1
+
+            // Enviar la solicitud POST para registrar la compra
+            fetch('/compras', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    cliente_id: clienteId,
+                    producto_id: productId,
+                    cantidad: cantidad,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);  // Si la compra fue exitosa, mostramos el mensaje
+                } else if (data.error) {
+                    alert(data.error);  // Si hubo un error, mostramos el mensaje de error
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un problema al realizar la compra.');
+            });
+        }
+
+        // Cargar los productos cuando la página se cargue
+        window.onload = obtenerProductos;
+    </script>
+</body>
+</html>

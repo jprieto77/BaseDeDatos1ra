@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | MyStore</title>
+    <link rel="stylesheet" href="../static/style/manager_devoluciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>MyStore</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" ><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="manage_lista.html"><i class="fas fa-box"></i> Productos</a>
+                <a href="manage_users.html"><i class="fas fa-th-large"></i> Usuarios</a>
+                <a href="manage_sucursales.html"><i class="fas fa-store"></i> Sucursales</a>
+                <a href="manage_devoluciones.html" class="active"><i class="fas fa-undo-alt"></i> Devoluciones</a>
+                <a href="manager_comentarios.html"><i class="fas fa-comments"></i> Comentarios</a>
+                <a href="configuracion.html"><i class="fas fa-cog"></i> Configuración</a>
+            </nav>
+        </aside>
+        <main class="content">
+            <header class="header">
+                <div class="header-actions">
+                    <h1>Admin Panel</h1>
+                    <div class="user-menu">
+                        <i class="fas fa-user-circle"></i> Admin
+                        <button><i class="fas fa-sign-out-alt"></i> Salir</button>
+                    </div>
+                </div>
+            </header>
+    
+            <div class="container">
+                <h2 class="page-title">Devoluciones</h2>
+                <div class="search-bar">
+                  <input type="text" class="search-input" placeholder="Buscar por ID o producto">
+                  <button class="search-btn">Buscar</button>
+                </div>
+    <table class="branch-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Producto</th>
+          <th>Motivo</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ devolucion.id }}</td>
+          <td>{{ devolucion.producto }}</td>
+          <td>{{ devolucion.motivo }}</td>
+          <td>{{ devolucion.estado }}</td>
+          <td><button class="btn btn-details">Ver Detalles</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+            <!-- Más filas aquí -->
+        </tbody>
+    </table>
+</div>  
+        
+        
+
+    <script src="../static/js/sucursal.js"></script>
+</body>
+</html>
+

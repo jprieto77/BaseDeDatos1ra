@@ -1,0 +1,346 @@
+
+
+/* General Reset */
+body, h1, h2, h3, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.admin-layout {
+    display: flex;
+   
+}
+
+
+body label {
+    font-family: label ;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+.sidebar-header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 250px;
+}
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: #1abc9c;
+    border-radius: 4px;
+}
+/* Tabla */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2px;
+}
+
+.product-table thead {
+    background-color: #3da49d;
+    color: #fff;
+    text-align: left;
+}
+
+.product-table th, .product-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+
+.product-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Acciones */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit, .btn-delete {
+    background-color: transparent;
+    border: none;
+    color: #3da49d;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #ecf0f1;
+    color: #3da49d;
+}
+
+.btn-dlete:hover {
+    background-color: #f2d7d9;
+    color: #3da49d;
+}
+
+/* Contenedor principal */
+.product-list {
+   flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Main Content */
+.content {
+    background-color: #f4f6f9;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-actions h1 {
+    font-size: 1.8em;
+    color: #333;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.user-menu button {
+    background-color: #998eb1;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-menu button:hover {
+    background-color: #998eb1;
+}
+
+/* Encabezado */
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.product-header .btn-add {
+    background-color: #998eb1;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-header .btn-add:hover {
+    background-color: #998eb1;
+}.product-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.product-header .btn-add {
+    background-color: #998eb1;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-header .btn-add:hover {
+    background-color: #998eb1;
+}
+
+/* Contenedor principal */
+.branch-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
+.branch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.branch-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.branch-header .btn-add {
+    background-color: #998eb1;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.branch-header .btn-add:hover {
+    background-color: #998eb1;
+}
+
+/* Tabla */
+.branch-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.branch-table thead {
+    background-color: #3da49d;
+    color: #fff;
+    text-align: left;
+}
+
+.branch-table th, .branch-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.branch-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Acciones */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit, .btn-delete {
+    background-color: transparent;
+    border: none;
+    color: #3da49d;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #ecf0f1;
+    color: #3da49d;
+}
+
+.btn-delete:hover {
+    background-color: #f2d7d9;
+    color: #998eb1;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}

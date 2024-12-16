@@ -1,0 +1,145 @@
+/* Reset and Global Styles */
+body label {
+    font-family: label;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Asegurarse de que html y body ocupen toda la altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a.active {
+    color: #998eb1;
+}
+
+header .actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Mapa */
+#map {
+    height: 800px; /* Altura ajustada */
+    width: 800px;
+}
+
+/* Estilo del botón de sucursal más cercana */
+#find-nearest {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#find-nearest:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor principal */
+.background-container {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 110px); /* Ajusta el alto para llenar el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Imagen de fondo borrosa */
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    filter: blur(8px);
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+/* Contenido encima del fondo */
+.background-container .content {
+    position: relative;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+/* Buscador */
+.search-bar input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.search-bar .search-button {
+    padding: 5px 10px;
+    background-color: #3da49d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #ffbf38;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Otros elementos de footer */
+footer .footer-links a {
+    color: #ffbf38;
+    margin: 0 10px;
+    text-decoration: none;
+}

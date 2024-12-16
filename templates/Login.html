@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyStore-Iniciar Sesión</title>
+    <link rel="stylesheet" href="../static/style/login.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+              MyStore
+        </div>
+    </header>
+    
+<div class="auth-container">
+    <div class="auth-card">
+        <h1>Iniciar Sesión</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Ingresa tu correo" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+                <a href="./forgot_password.html" class="link">¿Olvidaste tu contraseña?</a>
+            </div>
+        </form>        
+        <p>¿No tienes cuenta? <a href="./Register.html" class="link">Regístrate</a></p>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 MyStore - Todos los derechos reservados</p>
+    <div class="footer-links">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Contacto</a>
+    </div>
+</footer>
+<script>
+    async function login(event) {
+        event.preventDefault();  // Evitar el envío normal del formulario
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        // Validar que los campos no estén vacíos
+        if (!email || !password) {
+            alert('Por favor ingresa tu correo y contraseña');
+            return;
+        }
+
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert(data.message);  // Mostrar mensaje de éxito
+            window.location.href = '/home2.html';  // Redirigir al home si el login es exitoso
+        } else {
+            alert(data.message);  // Mostrar mensaje de error
+        }
+    }
+
+    // Asignar el evento al formulario
+    document.getElementById("loginForm").addEventListener("submit", login);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devoluciones</title>
+    <link rel="stylesheet" href="../static/style/devoluciones.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">MyStore</div>
+        <nav>
+            <a href="home.html">Inicio</a>
+            <a href="Categorias.html">Categorías</a>
+            <a href="Productos.html">Productos</a>
+            <a href="Devoluciones.html" class="active">Devoluciones</a>
+        </nav>
+        <div class="actions">
+            <button class="login"><a href="Login.html">Iniciar sesión</a></button>
+            <button class="signup"><a href="Register.html">Registrarse</a></button>
+        </div>
+    </header>
+
+    <!-- Devoluciones Form -->
+    <section class="returns">
+        <h2>Solicitar Devolución</h2>
+        <form action="/submit_return" method="POST">
+            <div class="form-group">
+                <label for="order-number">Número de Pedido</label>
+                <input type="text" id="order-number" name="order_number" placeholder="Ingresa tu número de pedido" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Razón de la Devolución</label>
+                <select id="reason" name="reason" required>
+                    <option value="">Seleccionar una opción</option>
+                    <option value="defective">Producto defectuoso</option>
+                    <option value="not_as_described">No es como se describió</option>
+                    <option value="wrong_item">Producto equivocado</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="file-upload">Subir Evidencia (opcional)</label>
+                <input type="file" id="file-upload" name="file_upload" accept="image/*">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MyStore - Todos los derechos reservados</p>
+        <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Contacto</a>
+        </div>
+    </footer>
+</body>
+</html>
